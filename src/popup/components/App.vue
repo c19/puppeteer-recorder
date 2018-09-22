@@ -150,7 +150,7 @@
             name: this.name,
             url: this.url,
             events: this.code,
-            eventCount: this.recording.length
+            eventCount: JSON.parse(this.code).length
           },
         }).then((data) => {
           // Result
@@ -214,7 +214,7 @@
         return this.isCopying ? 'copied!' : 'copy to clipboard'
       },
       url () {
-        const goto = this.recording.filter(a => a.action=='goto*')
+        const goto = JSON.parse(this.code).filter(a => a.action=='goto*')
         return goto.length > 0 ? goto[0].href : ''
       },
     }
