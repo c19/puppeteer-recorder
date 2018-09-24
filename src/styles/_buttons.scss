@@ -35,5 +35,11 @@ button {
       background-color: $brand-danger;
       border-color: $brand-danger;
     }
+
+    &.btn-success {
+      color: #fff;
+      background-color: $brand-success;
+      border-color: $brand-success;
+    }
   }
 }

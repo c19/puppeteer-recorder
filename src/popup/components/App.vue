@@ -33,8 +33,8 @@
         <div class="results-footer" v-show="showResultsTab">
           <button class="btn btn-sm btn-primary" @click="restart" v-show="code">Restart</button>
           <input class="input-name" v-model="name" placeholder="input record name">
-          <button class="btn btn-sm btn-primary" @click="save" v-show="code">Save</button>
-          <a href="#" v-clipboard:copy='code' @click="setCopying" v-show="code">{{copyLinkText}}</a>
+          <button :class="[{'btn-success': saved === 'Success'}, {'btn-danger': saved === 'Error'}, 'btn', 'btn-sm', 'btn-primary']" @click="save" :disabled="saved != 'Save'" v-show="code">{{saved}}</button>
+          <a style="width: 65px;" href="#" v-clipboard:copy='code' @click="setCopying" v-show="code">{{copyLinkText}}</a>
         </div>
       </div>
       <HelpTab v-show="showHelp"></HelpTab>
@@ -66,6 +66,7 @@
         bus: null,
         version,
         name: new Date().toLocaleDateString() + new Date().toLocaleTimeString(),
+        saved: 'Save'
       }
     },
     mounted () {
@@ -153,10 +154,10 @@
             eventCount: JSON.parse(this.code).length
           },
         }).then((data) => {
-          // Result
+          this.saved = 'Success'
           console.log(data)
         }).catch((error) => {
-          // Error
+          this.saved = 'Error'
           console.error(error)
         })
       },
