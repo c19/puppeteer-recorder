@@ -27,6 +27,8 @@ This project is pretty fresh, but does the following already:
 - Click Pause when you want to navigate without recording anything. Hit Resume to continue recording. 
 - Output is a json string. store it as data.json
 - Use like this: `node src/GenericScript.js data.json`
+- Or use [puppeteer-records-manager](https://github.com/c19/puppeteer-records-manager) to manage the records
+
 ## Background
 
 Writing Puppeteer scripts for scraping, testing and monitoring can be tricky. A recorder / code generator can be helpful,
